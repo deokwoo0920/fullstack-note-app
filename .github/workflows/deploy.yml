@@ -111,7 +111,7 @@ jobs:
                 mv /opt/app/note-app-new.jar /opt/app/note-app.jar,
                 systemctl start note-app,
                 sleep 10,
-                STATUS=$(curl -sf -o /dev/null -w "%{http_code}" http://localhost:8080/actuator/health),
+                STATUS=$(curl -sf -o /dev/null -w '%{http_code}' http://localhost:8080/actuator/health),
                 [ "$STATUS" = "200" ] && echo OK || exit 1
               ]' \
               --timeout-seconds 300 \
@@ -158,7 +158,7 @@ jobs:
                 pm2 start npm --name note-frontend -- start,
                 pm2 save,
                 sleep 5,
-                STATUS=$(curl -sf -o /dev/null -w "%{http_code}" http://localhost:3000),
+                STATUS=$(curl -sf -o /dev/null -w '%{http_code}' http://localhost:3000),
                 [ "$STATUS" = "200" ] && echo OK || exit 1,
                 rm -rf /tmp/fe.zip /tmp/fe-new
               ]' \
