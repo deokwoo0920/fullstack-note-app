@@ -48,12 +48,10 @@ jobs:
           npm run build
       - name: Prepare Arifact
         run: |
-          ls -al .
           mkdir -p deploy
           cp -r .next ./deploy/
           cp -r public .deploy/ 2>/dev/null || true
-          cp package.json package-lock.json next.config.ts ./deploy/ 
-          ls -al ./deploy/
+          cp package.json package-lock.json next.config.ts ./deploy/ 2>/dev/null || true
       - uses: actions/upload-artifact@v4
         with:
           name: frontend-build
@@ -83,6 +81,7 @@ jobs:
           aws s3 cp ./artifacts/backend/note-app.jar \
             s3://${S3_BUCKET}/backend/note-app-latest.jar
           # 프론트엔드
+          ls -al artifacts/frontend
           cd artifacts/frontend 
           zip -r ../frontend-${SHORT_SHA}.zip .next/ public/ package.json package-lock.json next.config.ts
           cd ..
