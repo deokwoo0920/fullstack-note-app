@@ -51,7 +51,7 @@ jobs:
           ls -al .
           mkdir -p deploy
           cp -r .next ./deploy/
-          cp -r public .deploy/ 
+          cp -r public .deploy/ 2>/dev/null || true
           cp package.json package-lock.json next.config.ts ./deploy/ 
           ls -al ./deploy/
       - uses: actions/upload-artifact@v4
