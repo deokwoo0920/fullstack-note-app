@@ -48,10 +48,12 @@ jobs:
           npm run build
       - name: Prepare Arifact
         run: |
+          ls -al .
           mkdir -p deploy
           cp -r .next ./deploy/
-          cp -r public .deploy/ 2> /dev/null || true
-          cp package.json package-lock.json next.config.ts ./deploy/ 2>/dev/null || true
+          cp -r public .deploy/ 
+          cp package.json package-lock.json next.config.ts ./deploy/ 
+          ls -al ./deploy/
       - uses: actions/upload-artifact@v4
         with:
           name: frontend-build
