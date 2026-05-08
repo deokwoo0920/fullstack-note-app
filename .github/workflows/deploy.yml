@@ -81,7 +81,9 @@ jobs:
           aws s3 cp ./artifacts/backend/note-app.jar \
             s3://${S3_BUCKET}/backend/note-app-latest.jar
           # 프론트엔드
-          cd artifacts && zip -r frontend-${SHORT_SHA}.zip frontend/
+          cd artifacts/frontend 
+          zip -r ../frontend-${SHORT_SHA}.zip .next/ public/ package.json package-lock.json next.config.ts
+          cd ..
           aws s3 cp frontend-${SHORT_SHA}.zip \
             s3://${S3_BUCKET}/frontend/frontend-${SHORT_SHA}.zip
           aws s3 cp frontend-${SHORT_SHA}.zip \
