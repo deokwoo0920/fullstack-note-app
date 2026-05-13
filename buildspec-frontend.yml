@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    # Backend URL
+    # Backend URL [BE_EB_URL] - 이미 만들어진 EB의 Backend URL 주소 입력
     NEXT_PUBLIC_API_URL: "http://note-app-backend-prod.eba-vpg52qmj.ap-northeast-2.elasticbeanstalk.com/"
 
 phases:
