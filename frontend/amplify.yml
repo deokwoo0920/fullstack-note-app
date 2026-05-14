@@ -1,7 +1,6 @@
 version: 1
 applications:
   - frontend:
-      # 루트 폴더 기준 리액트 프로젝트가 위치한 폴더명 (예: frontend 또는 client)
       appRoot: frontend
     stages:
       preBuild:
@@ -9,10 +8,9 @@ applications:
           - npm ci
       build:
         commands:
-          # 필요한 환경 변수나 설정 주입이 필요하다면 여기에 추가 가능
           - npm run build
     artifacts:
-      baseDirectory: dist # Vite 기준 빌드 결과물 폴더 (Webpack/CRA 라면 build로 변경)
+      baseDirectory: dist
       files:
         - '**/*'
     cache:
